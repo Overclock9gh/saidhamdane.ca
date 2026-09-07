@@ -1,0 +1,628 @@
+/* ==========================================================================
+   saidhamdane.com — page principale
+   Saïd Hamdane, 2026
+   ========================================================================== */
+
+/* ---------- Palette ---------- */
+
+:root {
+  --page-bg: #ffffff;
+  --soft-bg: #E4F9F5;
+  --band-bg: #66BFBF;
+  --band-text: #ffffff;
+  --text: #40514E;
+  --primary: #66BFBF;
+  --accent: #11999E;
+  --accent-hover: #30e3cb;
+  --dotted: #EAF6F6;
+  --footer-bg: #66BFBF;
+  --footer-text: #EAF6F6;
+  --btn-from: #11cdd4;
+  --btn-to: #11999e;
+  --card-bg: #ffffff;
+  --shell-bg: #f1f1f1;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --page-bg: #101d1f;
+    --soft-bg: #16292b;
+    --band-bg: #14383a;
+    --band-text: #E4F9F5;
+    --text: #c6dcda;
+    --primary: #66BFBF;
+    --accent: #55c6c4;
+    --accent-hover: #8ff0e5;
+    --dotted: #23423f;
+    --footer-bg: #14383a;
+    --footer-text: #cfe9e6;
+    --btn-from: #14b7bd;
+    --btn-to: #0e8085;
+    --card-bg: #16292b;
+    --shell-bg: #101d1f;
+  }
+}
+
+:root[data-theme="dark"] {
+  --page-bg: #101d1f;
+  --soft-bg: #16292b;
+  --band-bg: #14383a;
+  --band-text: #E4F9F5;
+  --text: #c6dcda;
+  --primary: #66BFBF;
+  --accent: #55c6c4;
+  --accent-hover: #8ff0e5;
+  --dotted: #23423f;
+  --footer-bg: #14383a;
+  --footer-text: #cfe9e6;
+  --btn-from: #14b7bd;
+  --btn-to: #0e8085;
+  --card-bg: #16292b;
+  --shell-bg: #101d1f;
+}
+
+/* ---------- Base ---------- */
+
+html {
+  overflow-x: hidden;
+}
+
+body {
+  color: var(--text);
+  background-color: var(--page-bg);
+  margin: 0;
+  overflow-x: hidden;
+  text-align: center;
+  font-family: 'Merriweather', serif;
+  transition: background-color .3s ease, color .3s ease;
+}
+
+h1 {
+  color: var(--primary);
+  font-size: 5.625rem;
+  margin: 50px auto 0 auto;
+  font-family: 'Sacramento', cursive;
+  font-weight: bold;
+}
+
+h2 {
+  color: var(--primary);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  font-weight: normal;
+  padding-bottom: 10px;
+}
+
+h3 {
+  color: var(--accent);
+  font-family: 'Montserrat', sans-serif;
+}
+
+p {
+  line-height: 2;
+}
+
+hr {
+  border: dotted var(--dotted) 6px;
+  border-bottom: none;
+  width: 4%;
+  margin: 100px auto;
+}
+
+a {
+  color: var(--accent);
+  font-family: 'Montserrat', sans-serif;
+  margin: 10px 20px;
+  text-decoration: none;
+}
+
+a:hover {
+  color: var(--accent-hover);
+}
+
+/* ---------- Nav Bar ---------- */
+
+#title {
+  background-color: var(--soft-bg);
+  transition: background-color .3s ease;
+}
+
+.linkedin {
+  color: var(--primary);
+  width: 8rem;
+}
+
+.linkedin:hover {
+  color: var(--accent-hover);
+}
+
+.navbar {
+  padding: 0 0 4.5rem;
+}
+
+.nav-link {
+  font-size: 1.2rem;
+  color: var(--accent);
+}
+
+.nav-link:hover {
+  color: var(--accent-hover);
+}
+
+.navbar-toggler {
+  border-color: var(--primary);
+}
+
+.container-fluid {
+  padding: 1.5% 15%;
+}
+
+/* ---------- Boutons de la barre du haut ---------- */
+
+.switches {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  margin-left: 20px;
+}
+
+.lang-switch {
+  display: inline-flex;
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  overflow: hidden;
+  vertical-align: middle;
+}
+
+.lang-btn {
+  border: none;
+  background: transparent;
+  color: var(--accent);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  padding: 4px 14px;
+  cursor: pointer;
+  outline: none;
+}
+
+.lang-btn + .lang-btn {
+  border-left: 2px solid var(--primary);
+}
+
+.lang-btn.is-active {
+  background: var(--primary);
+  color: var(--band-text);
+}
+
+.theme-btn {
+  border: 2px solid var(--primary);
+  border-radius: 8px;
+  background: transparent;
+  color: var(--accent);
+  font-size: 0.9rem;
+  line-height: 1;
+  padding: 7px 11px;
+  cursor: pointer;
+  outline: none;
+  transition: color .2s ease, border-color .2s ease;
+}
+
+.theme-btn:hover {
+  color: var(--accent-hover);
+  border-color: var(--accent-hover);
+}
+
+
+/* Icône du menu mobile, lisible dans les deux modes */
+
+.navbar-toggler-icon {
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='%2366BFBF' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* ---------- Top Container ---------- */
+
+.top-container {
+  background-color: var(--soft-bg);
+  position: relative;
+  overflow: hidden;
+  padding-top: 0.01rem;
+  transition: background-color .3s ease;
+}
+
+.top-cloud {
+  width: 5rem;
+  position: absolute;
+  right: 350px;
+  top: 40px;
+  transition: ease all 1s;
+}
+
+.bottom-cloud {
+  width: 5rem;
+  position: absolute;
+  left: 350px;
+  bottom: 300px;
+  transition: ease all 1s;
+}
+
+.laptop {
+  width: 32rem;
+  transition: ease all 1s;
+}
+
+.name {
+  font-size: 7rem;
+  transition: ease all 1s;
+}
+
+.description {
+  font-size: 1.5rem;
+  transition: ease all 1s;
+}
+
+@media (max-width: 1650px) {
+
+  .name {
+    font-size: 4rem;
+  }
+
+  .top-cloud {
+    right: 150px;
+    top: 35px;
+  }
+
+  .bottom-cloud {
+    left: 150px;
+    bottom: 250px;
+  }
+
+  .laptop {
+    width: 25rem;
+  }
+
+}
+
+@media (max-width: 1250px) {
+
+  .name {
+    font-size: 4rem;
+  }
+
+  .top-cloud {
+    width: 3.75rem;
+    right: 20px;
+    top: 205px;
+  }
+
+  .bottom-cloud {
+    width: 3.75rem;
+    left: 20px;
+    bottom: 420px;
+  }
+
+  .laptop {
+    width: 25rem;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .name {
+    font-size: 4rem;
+  }
+
+  .top-cloud {
+    width: 3.5rem;
+    right: -20px;
+    top: 235px;
+  }
+
+  .bottom-cloud {
+    width: 3.5rem;
+    left: -20px;
+    bottom: 400px;
+  }
+
+  .laptop {
+    width: 15rem;
+  }
+
+}
+
+/* ---------- Middle Container ---------- */
+
+.middle-container {
+  margin: 100px 0 0;
+}
+
+.intro {
+  width: 30%;
+  margin: auto;
+}
+
+/* ---------- Skills Section ---------- */
+
+.skills {
+  position: relative;
+  padding-bottom: 0.001rem;
+}
+
+.skill-row {
+  width: 50%;
+  margin: 100px auto 100px auto;
+  text-align: left;
+}
+
+/* Contient l'illustration flottante pour qu'elle ne déborde pas sur le bloc suivant */
+.skill-row::after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+.said-img {
+  width: 12rem;
+  border-radius: 100% 100%;
+}
+
+.skill-img {
+  width: 15rem;
+}
+
+.skill-img-left {
+  float: left;
+  margin-right: 30px;
+}
+
+.skill-img-right {
+  float: right;
+  margin-left: 30px;
+}
+
+/* ---------- Features Sections ---------- */
+
+.tools-container {
+  background-color: var(--band-bg);
+  padding: 3.5% 0 3.5% 0;
+  transition: background-color .3s ease;
+}
+
+.software-container {
+  padding: 3.5% 0 3.5% 0;
+}
+
+.feature-box {
+  text-align: center;
+  padding: 5%;
+}
+
+.tools-title-h2 {
+  color: var(--band-text);
+}
+
+.tools-title-h3 {
+  font-family: 'Lilita One';
+  font-size: 1.5rem;
+  color: var(--band-text);
+}
+
+#tools-features {
+  padding: 2% 15% 0;
+}
+
+.software-title-h3 {
+  font-family: 'Lilita One';
+  font-size: 1.5rem;
+  color: var(--primary);
+}
+
+#software-features {
+  padding: 2% 15%;
+}
+
+.icon-website {
+  color: var(--band-text);
+  margin-bottom: 1rem;
+}
+
+.icon-website:hover {
+  color: var(--accent-hover);
+}
+
+.icon-course {
+  color: var(--primary);
+  margin-bottom: 1rem;
+}
+
+.icon-course:hover {
+  color: var(--accent-hover);
+}
+
+/* ---------- Timeline Section ---------- */
+
+.timeline-container {
+  background-color: var(--soft-bg);
+  padding: 4% 0;
+  transition: background-color .3s ease;
+}
+
+.timeline {
+  width: 50%;
+  margin: 0 auto;
+  text-align: left;
+}
+
+.timeline-row {
+  border-left: dotted var(--primary) 6px;
+  padding: 0 0 10px 30px;
+  margin-bottom: 40px;
+}
+
+.timeline-row h3 {
+  margin-bottom: 0;
+}
+
+.timeline-where {
+  font-family: 'Montserrat', sans-serif;
+  color: var(--primary);
+  margin-bottom: 10px;
+  line-height: 1.6;
+}
+
+/* ---------- Hobbies Section ---------- */
+
+#hobbies {
+  text-align: center;
+  background: var(--band-bg);
+  color: var(--band-text);
+  transition: background-color .3s ease;
+}
+
+.hobbies-title {
+  color: var(--band-text);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 2.5rem;
+  font-weight: normal;
+  padding-bottom: 50px;
+}
+
+.hobbies-paragraph {
+  color: var(--band-text);
+  font-family: 'Lilita One';
+  font-size: 3rem;
+  line-height: 1.5;
+}
+
+.hobbies-image {
+  width: 15rem;
+}
+
+.carousel-item {
+  padding: 7% 15%;
+}
+
+/* ---------- Contact ---------- */
+
+.contact-me {
+  margin: 100px;
+}
+
+.btn {
+  background: var(--btn-from);
+  background-image: linear-gradient(var(--btn-from), var(--btn-to));
+  border-radius: 8px;
+  font-family: 'Montserrat', sans-serif;
+  color: #ffffff;
+  font-size: 20px;
+  padding: 10px 20px 10px 20px;
+  text-decoration: none;
+}
+
+.btn:hover {
+  background: var(--accent-hover);
+  background-image: linear-gradient(var(--accent-hover), #2bc4ad);
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* ---------- Bottom Container ---------- */
+
+.bottom-container {
+  background-color: var(--footer-bg);
+  padding: 50px 0 20px;
+  transition: background-color .3s ease;
+}
+
+.copyright {
+  color: var(--footer-text);
+  font-size: 0.75rem;
+  padding: 20px 0;
+}
+
+.bottom-container div {
+  color: var(--footer-text);
+}
+
+/* ---------- Apparition au défilement ---------- */
+
+.reveal {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .7s ease, transform .7s ease;
+}
+
+.reveal.is-visible {
+  opacity: 1;
+  transform: none;
+}
+
+/* ---------- Responsive ---------- */
+
+@media (max-width: 1250px) {
+
+  .timeline {
+    width: 70%;
+  }
+
+}
+
+@media (max-width: 700px) {
+
+  .timeline {
+    width: 80%;
+  }
+
+  .skill-row {
+    width: 80%;
+  }
+
+  .skill-img-left,
+  .skill-img-right {
+    float: none;
+    margin: 0 auto 20px;
+  }
+
+  .intro {
+    width: 80%;
+  }
+
+  .contact-me {
+    margin: 60px 20px;
+  }
+
+  .switches {
+    margin: 10px 0 0;
+  }
+
+}
+
+@media (max-width: 500px) {
+
+  .name {
+    font-size: 3rem;
+  }
+
+  .description {
+    font-size: 1.2rem;
+  }
+
+  .hobbies-paragraph {
+    font-size: 1.8rem;
+  }
+
+}
+
+@media (prefers-reduced-motion: reduce) {
+
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+
+  * {
+    transition: none !important;
+  }
+
+}
