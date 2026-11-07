@@ -8,17 +8,17 @@
 :root {
   --page-bg: #ffffff;
   --soft-bg: #E4F9F5;
-  --band-bg: #66BFBF;
+  --band-bg: #257F80;
   --band-text: #ffffff;
-  --text: #40514E;
-  --primary: #66BFBF;
-  --accent: #11999E;
-  --accent-hover: #30e3cb;
+  --text: #3A4A48;
+  --primary: #1F8688;
+  --accent: #0F6F72;
+  --accent-hover: #139A93;
   --dotted: #EAF6F6;
-  --footer-bg: #66BFBF;
-  --footer-text: #EAF6F6;
-  --btn-from: #11cdd4;
-  --btn-to: #11999e;
+  --footer-bg: #1F7F82;
+  --footer-text: #FFFFFF;
+  --btn-from: #1A9DA2;
+  --btn-to: #127E82;
   --card-bg: #ffffff;
   --shell-bg: #f1f1f1;
 }
@@ -36,8 +36,8 @@
     --dotted: #23423f;
     --footer-bg: #14383a;
     --footer-text: #cfe9e6;
-    --btn-from: #14b7bd;
-    --btn-to: #0e8085;
+    --btn-from: #0f8f94;
+    --btn-to: #0a6468;
     --card-bg: #16292b;
     --shell-bg: #101d1f;
   }
@@ -55,8 +55,8 @@
   --dotted: #23423f;
   --footer-bg: #14383a;
   --footer-text: #cfe9e6;
-  --btn-from: #14b7bd;
-  --btn-to: #0e8085;
+  --btn-from: #0f8f94;
+  --btn-to: #0a6468;
   --card-bg: #16292b;
   --shell-bg: #101d1f;
 }
@@ -987,4 +987,144 @@ html {
     font-size: 1.15rem;
   }
 
+}
+
+/* ---------- Menu : couleurs lisibles dans les deux modes ---------- */
+
+.navbar-light .navbar-nav .nav-link,
+.navbar-light .navbar-nav .nav-link:focus {
+  color: var(--accent);
+}
+
+.navbar-light .navbar-nav .nav-link:hover,
+.navbar-light .navbar-nav .nav-link[aria-current="page"] {
+  color: var(--accent-hover);
+}
+
+.navbar-light .navbar-toggler {
+  border-color: var(--primary);
+}
+
+.navbar-light .brand-name,
+.brand-name {
+  font-family: 'Sacramento', cursive;
+  font-size: 2.6rem;
+  font-weight: bold;
+  color: var(--primary);
+  margin: 0;
+  line-height: 1;
+}
+
+.navbar-light .brand-name:hover,
+.brand-name:hover {
+  color: var(--accent-hover);
+  text-decoration: none;
+}
+
+/* ---------- Menu sur cellulaire : nom et bouton sur la même ligne ---------- */
+
+@media (max-width: 991px) {
+
+  .container-fluid {
+    padding: 14px 16px;
+  }
+
+  .navbar {
+    padding-bottom: 1.5rem;
+  }
+
+  .navbar-light .brand-name,
+  .brand-name {
+    font-size: 2.1rem;
+  }
+
+  .navbar-collapse {
+    text-align: center;
+    padding-top: 10px;
+  }
+
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+  opacity: 0.85;
+  width: 10%;
+}
+
+/* ---------- Lisibilité : boutons et bordures ---------- */
+
+.lang-btn.is-active {
+  background: var(--accent);
+  color: #ffffff;
+}
+
+.lang-switch,
+.theme-btn,
+.btn-ghost {
+  border-color: var(--accent);
+}
+
+.lang-btn + .lang-btn {
+  border-left-color: var(--accent);
+}
+
+.btn-ghost:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+}
+
+.tools-title-h3,
+.hobbies-title,
+.tools-title-h2,
+.hobbies-paragraph,
+.icon-website {
+  color: #ffffff;
+}
+
+.social a,
+.credits,
+.credits a,
+.copyright {
+  color: var(--footer-text);
+}
+
+.offer-card .offer-meta,
+.timeline-when,
+.timeline-where,
+.offer-note {
+  color: var(--accent);
+}
+
+.software-title-h3 {
+  color: var(--accent);
+}
+
+.tools-container {
+  background-color: var(--band-bg);
+}
+
+@media (max-width: 500px) {
+
+  .description {
+    color: var(--accent);
+  }
+
+}
+
+.navbar-light .navbar-nav .nav-link[aria-current="page"] {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 6px;
+}
+
+:root[data-theme="dark"] .lang-btn.is-active {
+  background: var(--primary);
+  color: #0f1f21;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) .lang-btn.is-active {
+    background: var(--primary);
+    color: #0f1f21;
+  }
 }
