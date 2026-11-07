@@ -1,96 +1,71 @@
 # saidhamdane.com
 
-Site portfolio de Saïd Hamdane, enseignant en cybersécurité à Montréal et
-formateur en informatique. Même style qu'à l'origine, contenu mis à jour en
-novembre 2026, version bilingue, mode sombre et section Formations.
+Personal website of Saïd Hamdane, cybersecurity teacher, department coordinator
+and computer trainer based in Montréal. Bilingual (French and English), with a
+dark mode and a training section. Updated November 2026.
 
-## Contenu
+Live site: https://saidhamdane.com
+
+## Structure
 
 ```
-index.html        page principale, À propos
-html/work.html    page Projets
-css/styles.css    styles de la page principale
-css/work.css      styles de la page Projets
-js/site.js        bascule FR / EN, mode sombre et apparition au défilement
-images/           illustrations, favicon, portrait et og-image.png
-robots.txt        autorise l'indexation et indique le plan du site
-sitemap.xml       plan du site pour les moteurs de recherche
-CNAME             domaine personnalisé pour GitHub Pages
+index.html        home page: about, training, tools, courses, path
+html/work.html    projects page
+css/styles.css    styles for the home page
+css/work.css      styles for the projects page
+js/site.js        FR / EN switch, dark mode and scroll animations
+images/           illustrations, favicon, portrait and og-image.png
+robots.txt        allows indexing and points to the sitemap
+sitemap.xml       site map for search engines
 ```
 
-## Formations
+## Features
 
-La section `#formations` de `index.html` présente l'offre de formation :
-quatre cartes (`.offer-card`), trois étapes (`.steps`) et un bouton qui
-ouvre un courriel avec l'objet « Demande de formation ». Le lien du bouton
-change avec la langue grâce aux attributs `data-href-fr` et `data-href-en`.
-Pour ajouter une offre, copie un bloc `<article class="offer-card">`.
+- **Bilingual.** Every translatable element has `data-fr` and `data-en`
+  attributes. The visible text in the HTML is the French version. The default
+  language follows the browser, and `?lang=en` or `?lang=fr` forces one.
+- **Dark mode.** Follows the system setting on the first visit. The moon or
+  sun button forces light or dark mode, and the choice is remembered. All
+  colours are CSS variables at the top of each stylesheet.
+- **Training section.** `#formations` on the home page lists four offers
+  (`.offer-card`), three steps (`.steps`) and a button that opens an email with
+  a ready subject line. The link changes with the language through
+  `data-href-fr` and `data-href-en`.
+- **LinkedIn preview.** Open Graph tags in the `<head>` and
+  `images/og-image.png` (1200 x 627) control the preview card on LinkedIn,
+  Teams and Facebook. A JSON-LD `Person` block describes the profile for
+  search engines.
+- **Accessible motion.** Blocks with `data-reveal` slide in on scroll. The
+  effect is disabled when the visitor asks for reduced motion, and nothing
+  stays hidden if JavaScript fails to load.
 
-## Aperçu LinkedIn
+## Editing
 
-Quand le lien du site est partagé sur LinkedIn, Teams ou Facebook, l'aperçu
-vient des balises `og:` dans le `<head>` et de `images/og-image.png`
-(1200 x 627). Après une mise à jour, colle l'adresse dans le Post Inspector de
-LinkedIn (linkedin.com/post-inspector) pour vider son cache. Un bloc JSON-LD
-de type `Person` décrit aussi le profil pour les moteurs de recherche.
+- **Text:** change the visible text and the `data-fr` attribute, then the
+  `data-en` attribute for the English version.
+- **Portrait:** drop a square photo in `images/` and update the `said-img`
+  image source in `index.html`.
+- **CV:** add the PDF at the root, then a button in the `contact-actions`
+  block: `<a class="btn" href="cv-said-hamdane.pdf" download>CV</a>`.
+- **LinkedIn cache:** after an update, paste the URL in
+  linkedin.com/post-inspector to refresh the preview.
 
-## Illustrations
+## Hosting
 
-Les quatre illustrations de la section « Ce que je fais » sont des SVG faits
-sur mesure, dans le même style de fenêtre que les visuels d'origine.
-`coordination.svg`, `teaching.svg`, `security.svg` et `network.svg`. Elles
-utilisent la palette `#03232e`, `#07485e`, `#fff5f5` et `#efe2dd`, donc une
-nouvelle illustration dans ces tons s'intégrera sans retouche.
+Static site, nothing to build or install. It is hosted on cPanel: upload the
+files to `public_html`, keeping `.htaccess` and `.well-known` in place. This
+repository is the source copy.
 
-## Mode sombre
+## Credits
 
-Le site suit le réglage du système au premier passage. Le bouton lune ou
-soleil dans la barre du haut force le mode clair ou sombre, et le choix est
-retenu d'une visite à l'autre. Toutes les couleurs sont des variables CSS
-définies en haut de chaque feuille de style, dans `:root` pour le mode clair
-et dans `:root[data-theme="dark"]` pour le mode sombre.
+Illustrations by Flat Icons and Freepik from Flaticon. Icons by Font Awesome.
+Built with Bootstrap 4.
 
-## Animation
+## License
 
-Les blocs portant l'attribut `data-reveal` montent doucement quand on les
-atteint en défilant. L'effet est désactivé si le visiteur a demandé un
-mouvement réduit dans son système, et rien ne disparaît si le JavaScript ne
-se charge pas.
+© 2026 Saïd Hamdane. All rights reserved.
 
-## Changer un texte
-
-Chaque élément traduisible porte deux attributs, `data-fr` et `data-en`.
-Le texte visible dans le HTML est la version française. Pour modifier une
-phrase il faut changer le texte visible et l'attribut `data-fr`, puis
-l'attribut `data-en` pour la version anglaise.
-
-La langue par défaut est celle du navigateur, avec le français en repli.
-`?lang=en` ou `?lang=fr` force une langue.
-
-## Remplacer le portrait
-
-Dépose ta photo dans `images/` et change la source de l'image portant la
-classe `said-img` dans `index.html`. Un format carré donne le meilleur
-résultat.
-
-## Ajouter un CV
-
-Dépose le PDF à la racine, puis ajoute un bouton dans le bloc `contact-me` :
-
-```html
-<a class="btn" href="cv-said-hamdane.pdf" download>CV</a>
-```
-
-## Domaine
-
-Le fichier `CNAME` contient `saidhamdane.com`, le domaine principal servi par
-GitHub Pages. Un seul domaine peut y figurer, donc pour que `saidhamdane.ca`
-mène au même endroit il faut le configurer chez le registraire, soit une
-redirection, soit un CNAME DNS vers le domaine principal. Les balises
-`canonical` des deux pages pointent vers le .com, pour que les moteurs de
-recherche ne voient qu'une seule adresse.
-
-## Publication
-
-Site statique, rien à installer. Un `git push` sur la branche principale
-suffit, GitHub Pages s'occupe du reste.
+This repository is public so the code can be read, but it is not open source.
+The text, portrait, preview image and design of this site may not be reused
+without permission. Third-party illustrations, icons and libraries remain
+under their own licenses.
